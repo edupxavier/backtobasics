@@ -9,6 +9,11 @@ namespace core
     {
         public bool Value { get; set; }
 
+        public Bit(bool initialValue = false)
+        {
+            Value = initialValue;
+        }
+
         public override bool Equals(object obj)
         {
             if ((obj == null) || !this.GetType().Equals(obj.GetType()))
