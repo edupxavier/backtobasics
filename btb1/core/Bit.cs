@@ -7,6 +7,9 @@ namespace core
     /// </summary>
     public sealed class Bit
     {
+        public static readonly Bit bFalse = new Bit(false);
+        public static readonly Bit bTrue = new Bit(true);
+
         public bool Value { get; set; }
 
         public Bit(bool initialValue = false)

@@ -13,7 +13,12 @@ namespace core
         /// </summary>
         public static Bit Not(this Bit input)
         {
-            return new Bit(!input.Value);
+            if (input == Bit.bFalse)
+                return Bit.bTrue;
+            else if (input == Bit.bTrue)
+                return Bit.bFalse;
+            else
+                throw new InvalidOperationException("NotGate input is not in truth table.");
         }
 
 
@@ -22,17 +27,14 @@ namespace core
         /// </summary>
         public static Bit And(this Bit inputA, Bit inputB)
         {
-            var bFalse = new Bit(false);
-            var bTrue = new Bit(true);
-
-            if ((inputA == bFalse) && (inputB == bFalse))
-                return bFalse;
-            else if ((inputA == bTrue) && (inputB == bFalse))
-                return bFalse;
-            else if ((inputA == bFalse) && (inputB == bTrue))
-                return bFalse;
-            else if ((inputA == bTrue) && (inputB == bTrue))
-                return bTrue;
+            if ((inputA == Bit.bFalse) && (inputB == Bit.bFalse))
+                return Bit.bFalse;
+            else if ((inputA == Bit.bTrue) && (inputB == Bit.bFalse))
+                return Bit.bFalse;
+            else if ((inputA == Bit.bFalse) && (inputB == Bit.bTrue))
+                return Bit.bFalse;
+            else if ((inputA == Bit.bTrue) && (inputB == Bit.bTrue))
+                return Bit.bTrue;
             else
                 throw new InvalidOperationException("AndGate input´s are not in truth table.");
         }
@@ -44,17 +46,14 @@ namespace core
         /// </summary>
         public static Bit Or(this Bit inputA, Bit inputB)
         {
-            var bFalse = new Bit(false);
-            var bTrue = new Bit(true);
-
-            if ((inputA == bFalse) && (inputB == bFalse))
-                return bFalse;
-            else if ((inputA == bTrue) && (inputB == bFalse))
-                return bTrue;
-            else if ((inputA == bFalse) && (inputB == bTrue))
-                return bTrue;
-            else if ((inputA == bTrue) && (inputB == bTrue))
-                return bTrue;
+            if ((inputA == Bit.bFalse) && (inputB == Bit.bFalse))
+                return Bit.bFalse;
+            else if ((inputA == Bit.bTrue) && (inputB == Bit.bFalse))
+                return Bit.bTrue;
+            else if ((inputA == Bit.bFalse) && (inputB == Bit.bTrue))
+                return Bit.bTrue;
+            else if ((inputA == Bit.bTrue) && (inputB == Bit.bTrue))
+                return Bit.bTrue;
             else
                 throw new InvalidOperationException("OrGate input´s are not in truth table.");
         }
